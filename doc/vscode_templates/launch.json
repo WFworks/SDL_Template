@@ -6,7 +6,7 @@
       "type": "cppvsdbg",
       "request": "launch",
       "program": "${workspaceFolder}/build/Debug/game.exe",
-      "cwd": "${workspaceFolder}/build/",
+      "cwd": "${workspaceFolder}/build/Debug",
       "console": "internalConsole",
       "preLaunchTask": "CMake Build (Windows)"
     },
