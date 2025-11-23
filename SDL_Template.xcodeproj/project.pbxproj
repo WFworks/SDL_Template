@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7EDCBD952ED355160069EE3D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 7EDCBD932ED355160069EE3D /* main.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		7EDCBD872ED354EA0069EE3D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -20,15 +24,10 @@
 
 /* Begin PBXFileReference section */
 		7EDCBD892ED354EA0069EE3D /* SDL_Template */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SDL_Template; sourceTree = BUILT_PRODUCTS_DIR; };
+		7EDCBD932ED355160069EE3D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		7EDCBD962ED355240069EE3D /* CMakeLists.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		7EDCBD972ED355240069EE3D /* CMakePresets.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = CMakePresets.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		7EDCBD8B2ED354EA0069EE3D /* SDL_Template */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = SDL_Template;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		7EDCBD862ED354EA0069EE3D /* Frameworks */ = {
@@ -44,8 +43,10 @@
 		7EDCBD802ED354EA0069EE3D = {
 			isa = PBXGroup;
 			children = (
-				7EDCBD8B2ED354EA0069EE3D /* SDL_Template */,
+				7EDCBD942ED355160069EE3D /* src */,
 				7EDCBD8A2ED354EA0069EE3D /* Products */,
+				7EDCBD962ED355240069EE3D /* CMakeLists.txt */,
+				7EDCBD972ED355240069EE3D /* CMakePresets.json */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,6 +56,14 @@
 				7EDCBD892ED354EA0069EE3D /* SDL_Template */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7EDCBD942ED355160069EE3D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				7EDCBD932ED355160069EE3D /* main.cpp */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +80,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				7EDCBD8B2ED354EA0069EE3D /* SDL_Template */,
 			);
 			name = SDL_Template;
 			packageProductDependencies = (
@@ -120,6 +126,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EDCBD952ED355160069EE3D /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +252,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /opt/homebrew/include;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/lib;
+				OTHER_LDFLAGS = (
+					"-lSDL2",
+					"-lSDL2_image",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -253,6 +266,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				HEADER_SEARCH_PATHS = /opt/homebrew/include;
+				LIBRARY_SEARCH_PATHS = /opt/homebrew/lib;
+				OTHER_LDFLAGS = (
+					"-lSDL2",
+					"-lSDL2_image",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
