@@ -1,39 +1,18 @@
-#include <SDL2/SDL.h>
-#include <iostream>
+#include "Application.h"
+#include "SingleInstance.h"
+#include <memory>
+//#include <iostream>
 
-int main()
+int main(int argc, char** argv)
 {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        std::cout << "SDL init failed: " << SDL_GetError() << std::endl;
+    SingleInstance instance;
+    if (!instance.IsLocked()) {
         return 1;
     }
-
-    SDL_Window* window = SDL_CreateWindow(
-        "SDL2 Window",
-        SDL_WINDOWPOS_CENTERED,
-        SDL_WINDOWPOS_CENTERED,
-        800, 600,
-        SDL_WINDOW_SHOWN
-    );
-
-    if (!window) {
-        std::cout << "SDL_CreateWindow error: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        return 1;
-    }
-
-    bool running = true;
-    SDL_Event e;
-
-    while (running) {
-        while (SDL_PollEvent(&e)) {
-            if (e.type == SDL_QUIT) running = false;
-        }
-
-        SDL_Delay(16);
-    }
-
-    SDL_DestroyWindow(window);
-    SDL_Quit();
+    //std::cout << "プログラムを起動しました。" << std::endl;
+    
+    std::unique_ptr<Application> app = std::make_unique<Application>();
+    app->Execute();
     return 0;
 }
+
