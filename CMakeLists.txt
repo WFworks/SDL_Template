@@ -50,9 +50,15 @@ if(WIN32)
 #        assimp::assimp
     )
 
+    # SDLのエントリポイント無効化
     target_compile_definitions(${PROJECT_NAME} PRIVATE SDL_MAIN_HANDLED)
-    target_compile_options(${PROJECT_NAME} PRIVATE /utf-8)
-    target_link_options(${PROJECT_NAME} PRIVATE /SUBSYSTEM:CONSOLE)
+
+    # MSVC専用設定（Visual Studio系コンパイラ）
+    if (MSVC)
+        target_compile_options(${PROJECT_NAME} PRIVATE /utf-8 /MP)
+        target_link_options(${PROJECT_NAME} PRIVATE /SUBSYSTEM:CONSOLE)
+    endif()
+
 
     # vcpkg の DLL 置き場（自分の環境に合わせてここだけ調整）
     set(VCPKG_BIN_DIR "C:/tools/vcpkg/installed/x64-windows/bin")
